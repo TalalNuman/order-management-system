@@ -8,6 +8,6 @@ const {
 } = require("../controllers/userController");
 
 router.post("/", createUser).get("/", getUsers);
-router.post("/make_voucher", makeVoucher).post("/get_discount", getDiscount);
+// router.post("/make_voucher", makeVoucher).post("/get_discount", getDiscount);
 
 module.exports = router;

@@ -16,13 +16,17 @@ const addToCart = asyncHandler(async (req, res) => {
 
   let deliveryCharges = distance < 20 ? 200 : distance * 10;
   let VAT = cart.items_total > 1000 ? product.price * quantity * 0.15 : 100;
-  cart.VAT += VAT;
   product.inStock -= quantity;
+  cart.VAT += VAT;
+
   cart.deliveryCharges = deliveryCharges;
+  await cart.save();
   cart.items_total += product.price * quantity;
-  cart.cart_total =
-    cart.items_total + product.price * quantity + VAT + deliveryCharges;
+  await cart.save();
+
+  cart.cart_total = cart.items_total + cart.deliveryCharges + cart.VAT;
   await product.save();
+  await cart.save();
   cart.cartItems.push(cartItem);
   await cart.save();
 

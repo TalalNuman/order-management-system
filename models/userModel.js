@@ -32,18 +32,14 @@ const UserSchema = new Schema(
         },
       },
     ],
-
+    user_type: {
+      type: Number,
+      default: 0,
+    },
     // orders: [{
     //   type: String,
     //   required: true,
     // }],
-    // cart: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Cart",
-    //     required: true,
-    //   },
-    // ],
   },
   { timestamps: true }
 );
