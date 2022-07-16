@@ -21,9 +21,6 @@ const UserSchema = new Schema(
     },
     vouchers: [
       {
-        // 0 - voucher is valid
-        // 1 - voucher is used
-        // 2 - voucher is expired
         isRedeemed: { type: Number, default: 0 },
         voucher: {
           type: Schema.Types.ObjectId,
@@ -32,14 +29,18 @@ const UserSchema = new Schema(
         },
       },
     ],
+
     user_type: {
       type: Number,
       default: 0,
     },
-    // orders: [{
-    //   type: String,
-    //   required: true,
-    // }],
+    orders: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Cart",
+        required: true,
+      },
+    ],
   },
   { timestamps: true }
 );

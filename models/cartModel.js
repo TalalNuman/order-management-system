@@ -21,19 +21,23 @@ const CartSchema = new Schema(
     ],
     VAT: {
       type: Number,
-      required: true,
+      default: 0,
     },
     deliveryCharges: {
       type: Number,
-      required: true,
+      default: 0,
     },
     items_total: {
       type: Number,
-      required: true,
+      default: 0,
     },
     cart_total: {
       type: Number,
-      required: true,
+      default: 0,
+    },
+    isCheckedOut: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }
